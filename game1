@@ -1,0 +1,169 @@
+package assignments;
+import java.util.*;
+
+
+//Reads No of Players
+//Validates No of inputs
+//Automatic gusser
+//
+
+class player {
+	Scanner s= new Scanner(System.in);
+	
+	public int inputP() {
+		System.out.println("Enter player's guess (Range of 0-10): ");
+				int pNum=s.nextInt();
+			   if(pNum>10||pNum<0) {
+					System.out.println("Invalid input \n "
+							+ " Retry !! ");
+					
+					// System.out.print("Re-");
+					//System.exit(0);
+			
+			
+		    
+		}
+		
+		
+			return pNum;
+	
+	 
+}
+}
+
+class umpire{
+	Scanner s= new Scanner(System.in);
+	int uguessNum;
+	int numGusser;
+	int numP1;
+	int numP2;
+	int numP3;
+	int numP4,numP5;
+	
+	public void cNumfromGusser()
+	{
+	guesser g =new guesser();
+	numGusser = g.guessNumber();
+	}
+	
+	
+	public void collectNumPlayer()
+	{
+		
+		
+		System.out.println("Enter number of players (Range : 2-5):");
+		int n=s.nextInt();
+		if(n>=2&&n<=5) {
+		if(n>=2) {
+			player p1=new player();
+			player p2=new player();
+			numP1=p1.inputP();
+			numP2=p2.inputP();
+		}
+		if(n>=3) {
+			
+			player p3=new player();
+			numP3=p3.inputP();
+		}
+		if (n>=4) {
+			player p4=new player();
+			numP4=p4.inputP();
+		}
+		if(n>=5){
+			player p5=new player();
+			numP5=p5.inputP();
+		}
+		}
+		else {
+			System.out.println("Invalid input!! Retry \n  The number should be in Range of 2-5!");
+			System.exit(0);
+		}
+			 
+		}
+	
+	
+	
+public void cNumfromPr(){
+		
+		
+		//return guessNumber;
+		//return n;
+	}
+public void compare(){
+	//a=inputP();
+	//int n=a.length;
+	
+		if(numGusser==numP1) {
+			if(numGusser==numP2) {
+				if(numGusser==numP3) {
+					System.out.println("P1,P2,P3 - won game");
+				}
+				else  {
+					System.out.println("P1,P2 - won game");
+				}
+				
+			}
+			else if(numGusser==numP3) {
+				System.out.println("P1,P3 - won game");
+			}
+			else {
+				System.out.println("P1 - won game");
+			}
+		}
+		
+		
+		else if (numGusser==numP2) {
+			if(numGusser==numP3) {
+				System.out.println("P2,P3 - won game");
+			}
+			else {
+				System.out.println("P2 - won game");
+			}
+		}
+		
+        else if (numGusser==numP3) {
+        	System.out.println("P3 - won game");
+		}
+		else{
+        	System.out.println("Game drawn..");
+		}
+	}
+}
+	
+
+
+class guesser{
+	int guessNumber(){
+		/*Scanner sc= new Scanner(System.in);
+		System.out.println("Guesser - Enter guessing number (Range : 0-10):");
+		int pguessNumber=sc.nextInt();
+		if(pguessNumber<0||pguessNumber>10) {
+			System.out.println("Invalid input!! Retry \n  The number should be in Range of 0-10!");
+			System.exit(0);
+		}
+		return pguessNumber;*/
+		Random randomGenerator=new Random();
+		int p=randomGenerator.nextInt(11);
+		System.out.println(p);
+		return p;
+	}
+	
+}
+
+public class game3 {
+	public static void main(String[] args) {
+		umpire u=new umpire();
+		u.cNumfromGusser();
+		u.collectNumPlayer();
+		
+		//u.cNumfromPr();
+		u.compare();
+		/*
+		int n=s.nextInt();
+		if(n<=0||n>10) {
+			System.out.println("Invalid number of players!!Retry");
+			System.exit(0);*/
+		
+	}
+
+} 
